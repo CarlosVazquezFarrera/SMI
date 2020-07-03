@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "7U5t9ru0Ftrr3b9cGbI+/5sxV1wsD8BgU9g6C0T6VdIVXD8TX8qYFIQk3OJQtZPW8JBBVpT974n4jBsNZtn5HQ==",
+  "dgSpecHash": "nGScCSZI9ZPjSamhr23i+wHT7lCLau9su7FCQq3BQ30aekUmD68sqkNZ7xorvg4hJVJL+bI7eAbYYK2fnfIp1Q==",
   "success": true,
   "projectFilePath": "C:\\Xamarin\\SMI\\SMI\\SMI.iOS\\SMI.iOS.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\carlo\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
-    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
-    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.5.0.495\\xamarin.forms.4.5.0.495.nupkg.sha512"
+    "C:\\Users\\carlo\\.nuget\\packages\\mvvmlightlibsstd10\\5.4.1.1\\mvvmlightlibsstd10.5.4.1.1.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\xamarin.forms\\4.7.0.1080\\xamarin.forms.4.7.0.1080.nupkg.sha512"
   ],
   "logs": []
 }

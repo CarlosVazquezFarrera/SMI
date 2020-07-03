@@ -4,13 +4,23 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SMI.MainPage">
+             x:Class="SMI.MainPage"
+             xmlns:ViewModel="clr-namespace:SMI.ViewModels">
+    <ContentPage.BindingContext>
+        <ViewModel:MainViewModel/>
+    </ContentPage.BindingContext>
 
     <StackLayout>
         <!-- Place new controls here -->
         <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        <Label Text="{Binding Message}" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+        <ActivityIndicator IsRunning="{Binding IsRunning}"/>
+        <Button Text="Login"
+                Command="{Binding LoginComand}"/>
     </StackLayout>
 
 </ContentPage>

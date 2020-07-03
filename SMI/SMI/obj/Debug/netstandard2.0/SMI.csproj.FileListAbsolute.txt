@@ -1,0 +1,15 @@
+C:\Xamarin\SMI\SMI\SMI\bin\Debug\netstandard2.0\SMI.deps.json
+C:\Xamarin\SMI\SMI\SMI\bin\Debug\netstandard2.0\SMI.dll
+C:\Xamarin\SMI\SMI\SMI\bin\Debug\netstandard2.0\ref\SMI.dll
+C:\Xamarin\SMI\SMI\SMI\bin\Debug\netstandard2.0\SMI.pdb
+C:\Xamarin\SMI\SMI\SMI\obj\Debug\netstandard2.0\SMI.csprojAssemblyReference.cache
+C:\Xamarin\SMI\SMI\SMI\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Xamarin\SMI\SMI\SMI\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+C:\Xamarin\SMI\SMI\SMI\obj\Debug\netstandard2.0\SMI.AssemblyInfoInputs.cache
+C:\Xamarin\SMI\SMI\SMI\obj\Debug\netstandard2.0\SMI.AssemblyInfo.cs
+C:\Xamarin\SMI\SMI\SMI\obj\Debug\netstandard2.0\SMI.dll
+C:\Xamarin\SMI\SMI\SMI\obj\Debug\netstandard2.0\ref\SMI.dll
+C:\Xamarin\SMI\SMI\SMI\obj\Debug\netstandard2.0\SMI.pdb
+C:\Xamarin\SMI\SMI\SMI\obj\Debug\netstandard2.0\SMI.csproj.CoreCompileInputs.cache
+C:\Xamarin\SMI\SMI\SMI\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Xamarin\SMI\SMI\SMI\obj\Debug\netstandard2.0\Views\Inicio\InicioPage.xaml.g.cs
