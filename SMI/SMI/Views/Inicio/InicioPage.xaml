@@ -4,12 +4,44 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SMI.Views.Inicio.InicioPage">
+             x:Class="SMI.Views.Inicio.InicioPage"
+             xmlns:ViewModel="clr-namespace:SMI.ViewModels.Inicio">
+    <ContentPage.BindingContext>
+        <ViewModel:InicioViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <CollectionView ItemsSource="{Binding Empleados}">
+                <CollectionView.EmptyViewTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label Text="No se encontraro datos"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.EmptyViewTemplate>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label Text="{Binding Nombre}"/>
+                            <Button Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:InicioViewModel}}, Path=MostrarCommand}"
+                                    CommandParameter="{Binding}"
+                                    Grid.Column="1" 
+                                    Text="Imprimir"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="Cerrar Sesión"
+                    Command="{Binding CerrarSesionCommand}"/>
+            <Label HorizontalOptions="Center" 
+                   VerticalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Empleado: "/>
+                        <Span Text="{Binding Nombre}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

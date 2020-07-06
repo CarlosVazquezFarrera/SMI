@@ -5,22 +5,66 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="SMI.MainPage"
-             xmlns:ViewModel="clr-namespace:SMI.ViewModels">
+             xmlns:ViewModel="clr-namespace:SMI.ViewModels"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:UC="clr-namespace:SMI.UC">
     <ContentPage.BindingContext>
         <ViewModel:MainViewModel/>
     </ContentPage.BindingContext>
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-        <Label Text="{Binding Message}" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-        <ActivityIndicator IsRunning="{Binding IsRunning}"/>
-        <Button Text="Login"
-                Command="{Binding LoginComand}"/>
-    </StackLayout>
+    <Grid Margin="25, 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width=".75*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--Logo-->
+        <Image Grid.ColumnSpan="2" 
+               IsOpaque="True" 
+               Source="logo.png"/>
+        <!--Usuario-->
+        <UC:EntryWithImageUC Estilo="{StaticResource EntryLogin}" 
+                             Grid.Row="1" 
+                             Grid.ColumnSpan="2"
+                             Icono="user.png"
+                             PlaceHolder="Usuario"
+                             Keyboard="Text"/>
+
+        <!--Contraseña-->
+        <UC:EntryWithImageUC Estilo="{StaticResource EntryLogin}" 
+                             Grid.Row="2" 
+                             Grid.ColumnSpan="2"
+                             Icono="passwprd.png"
+                             IsPassword="True"
+                             PlaceHolder="Contraseña"
+                             Keyboard="Text"/>
+
+
+        <Label FontFamily="BAHNSCHRIFT"  
+               FontSize="17"
+               Grid.Row="3" 
+               Grid.ColumnSpan="2"
+               HorizontalOptions="CenterAndExpand"
+               Text="Mantener sesión abierta"
+               TextColor="#505050"
+               TranslationX="-10"
+               VerticalOptions="Center"/>
+        <CheckBox Grid.Column="1" 
+                  Grid.Row="3"
+                  HorizontalOptions="CenterAndExpand"
+                  IsChecked="{Binding MantenerSesion}"/>
+        <!--Iniciar sesión-->
+        <Button Command="{Binding LoginComand}"
+                Grid.ColumnSpan="2"
+                Grid.Row="4"
+                Style="{StaticResource BotonAzul}"
+                Text="Iniciar sesión"/>
+    </Grid>
 
 </ContentPage>

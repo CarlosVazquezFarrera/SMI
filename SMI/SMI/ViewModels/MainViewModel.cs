@@ -2,36 +2,35 @@
 {
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using SMI.Helpers;
     using SMI.OS;
+    using SMI.OS.Keys;
     using System.Windows.Input;
     public class MainViewModel: ViewModelBase
     {
         #region Constructor
         public MainViewModel()
         {
-            this.IsRunning = true;
         }
         #endregion
 
         #region Attributes
-        private string message;
-        private bool isRunning;
+        private bool mantenerSesion;
         #endregion
 
         #region Properties
-        public bool IsRunning 
+        /// <summary>
+        /// Define si el usuario ha habilitado la opción de mantener su sesipon abierta
+        /// </summary>
+        public bool MantenerSesion
         {
-            get { return this.isRunning; }
-            set { Set(ref isRunning, value); } 
-        }
-
-        public string Message
-        {
-            get { return this.message; }
-            set { Set(ref message, value); }
+            get { return this.mantenerSesion; }
+            set { 
+                Set(ref this.mantenerSesion, value);
+                Configuracion.MantenerSesion = value;
+            }
         }
         #endregion
-
 
         #region Comands
         public ICommand LoginComand
@@ -44,11 +43,10 @@
         #endregion
 
         #region Methos
-        private  void Login()
+        private async void Login()
         {
-            Message += "Hola";
-            IsRunning = !IsRunning;
-            //await Navigation.NavigateTo(PagesKeys.Inicio);
+            await Navigation.NavigateTo(PagesKeys.RootTabbed);
+            //await PopUp.PushPopUp(PopUpKeys.Mensaje);
         }
         #endregion
     }

@@ -4,8 +4,105 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SMI.App">
+             x:Class="SMI.App"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
     <Application.Resources>
+        <Style x:Key="StackApp" TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="White"/>
+        </Style>
+        
+        <Style x:Key="atrasBoton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+        </Style>
+        
+        <Style x:Key="LabelPerfilGrande" TargetType="Label">
+            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="TextColor" Value="#3E3F68"/>
+        </Style> 
+        
+        <Style x:Key="LabelAzulMediano" TargetType="Label">
+            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
+            <Setter Property="FontSize" Value="Title"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="TextColor" Value="#013B6B"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+        
+        <Style x:Key="LabelPerfil" TargetType="Label">
+            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="TextColor" Value="#6E7FAA"/>
+        </Style>
 
+        <Style x:Key="LabelPerfilOtros" TargetType="Label">
+            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Padding" Value="25, 5, 0, 5"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="TextColor" Value="#3E3F68"/>
+        </Style>
+
+        <Style x:Key="LabelPerfilOtrosRojo" TargetType="Label">
+            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Padding" Value="25, 5, 0, 5"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="TextColor" Value="#C40D26"/>
+        </Style>
+        
+        <Style x:Key="LabalFrame" TargetType="Label">
+            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="TextColor" Value="#7695ae"/>
+        </Style>
+        <Style x:Key="PopUp" TargetType="popup:PopupPage">
+            <Setter Property="BackgroundColor"     Value = "#d3d3d3FF"/>
+            <Setter Property="CloseWhenBackgroundIsClicked" Value="False"/>
+        </Style>
+        <Style x:Key="EntryLogin" TargetType="Entry">
+            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Opacity" Value=".57"/>
+            <Setter Property="PlaceholderColor" Value="#013B6B"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="FrameLogin" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="#ebeef0"/>
+            <Setter Property="Margin" Value="0"/>
+        </Style>
+
+        <Style x:Key="BotonTransparente" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+
+        <Style x:Key="BotonAzul" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#013B6B"/>
+            <Setter Property="BorderColor" Value="#D2A92D"/>
+            <Setter Property="BorderWidth" Value="1.5"/>
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+
+        <Style x:Key="BotonAzulMargin" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#013B6B"/>
+            <Setter Property="BorderColor" Value="#D2A92D"/>
+            <Setter Property="BorderWidth" Value="1.5"/>
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="Margin" Value="25, 0"/>
+        </Style>
     </Application.Resources>
 </Application>
