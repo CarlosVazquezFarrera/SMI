@@ -31,7 +31,7 @@
         /// <summary>
         /// Desapila el o los PopUps que haya instanciados
         /// </summary>
-        public static async void PopAllPopUps()
+        public static async Task PopAllPopUps()
         {
             await PopupNavigation.Instance.PopAllAsync();
         }

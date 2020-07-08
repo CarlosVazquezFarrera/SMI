@@ -2,12 +2,23 @@
 {
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using SMI.Helpers.Funciones;
     using SMI.OS;
     using SMI.OS.Keys;
     using System.Windows.Input;
 
     public class PerfilViewModel: ViewModelBase
     {
+        #region Constructor
+        private PerfilViewModel()
+        {
+
+        }
+        #endregion
+
+        #region Atributo
+        private static PerfilViewModel instancia; 
+        #endregion
 
         #region Commands
         /// <summary>
@@ -40,10 +51,31 @@
                 return new RelayCommand(CambiarFoto);
             }
         }
+       /// <summary>
+       /// Toma la foto de la cámara
+       /// </summary>
+        public ICommand TomarFotoCommand
+        {
+            get
+            {
+                return new RelayCommand(TomarFoto);
+            }
+        }
         #endregion
 
         #region Methods
-
+        /// <summary>
+        /// Patron singleton
+        /// </summary>
+        /// <returns></returns>
+        public static PerfilViewModel GetInstance()
+        {
+            if (instancia == null)
+            {
+                instancia = new PerfilViewModel();
+            }
+            return instancia;
+        }
         private async void CambiarPassword()
         {
             await Navigation.NavigateTo(PagesKeys.CambiasPassword);
@@ -57,6 +89,13 @@
         {
             await PopUp.PushPopUp(PopUpKeys.CambiarFoto);
         }
+        private async void TomarFoto()
+        {
+            var response = await Camara.TomarFoto();
+            var foto = response.Data;
+            await PopUp.PopAllPopUps();
+        }
+
         #endregion
     }
 }

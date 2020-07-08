@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SMI.ViewModels.Perfil;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,6 +11,7 @@ namespace SMI.Views.Perfil
         public PerfilPage()
         {
             InitializeComponent();
+            BindingContext = PerfilViewModel.GetInstance();
         }
     }
 }

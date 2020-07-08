@@ -7,7 +7,8 @@
                  x:Class="SMI.PopUps.CambiarFotoPopUp"
                  CloseWhenBackgroundIsClicked="True"
                  xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup">
+                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                 xmlns:ViewModel="clr-namespace:SMI.ViewModels.PopUps">
     <popup:PopupPage.Animation>
         <animations:ScaleAnimation 
             PositionIn="Bottom"
@@ -17,27 +18,57 @@
             DurationIn="350"
             DurationOut="350"
             EasingIn="SinOut"
-            EasingOut="SinIn"
+            EasingOut="SinOut"
             HasBackgroundAnimation="True"/>
     </popup:PopupPage.Animation>
     <ContentPage.Content>
         <Frame VerticalOptions="EndAndExpand"
-               HeightRequest="100">
+               HeightRequest="120">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="3*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Label FontAttributes="Bold" 
-                           Grid.ColumnSpan="4" 
-                           Text="Foto del perfil"
-                           Style="{StaticResource LabalFrame}"/>
+                       Grid.ColumnSpan="4" 
+                       Text="Foto del perfil"
+                       TextColor="#013B6B"
+                       Style="{StaticResource LabalFrame}"/>
+                <!--quitar foto-->
+                <Image Grid.Column="0"
+                       Grid.Row="1"
+                       Source="quitarfoto.png"/>
+                <Label Grid.Column="0"
+                       Grid.Row="3"
+                       Style="{StaticResource LabelCambiarFoto}"
+                       Text="Eliminar"/>
+                <!--Galeria-->
+                <Image Grid.Column="1" 
+                       Grid.Row="1"
+                       Source="galeria.png"/>
+                <Label Grid.Column="1" 
+                       Grid.Row="3"
+                       Style="{StaticResource LabelCambiarFoto}"
+                       Text="Galería"/>
+                <!--Camara-->
+                <Image Grid.Column="2" 
+                       Grid.Row="1"
+                       Source="camara.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TomarFotoCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Grid.Column="2"
+                       Grid.Row="3"
+                       Style="{StaticResource LabelCambiarFoto}"
+                       Text="Cámara"/>
             </Grid>
         </Frame>
     </ContentPage.Content>

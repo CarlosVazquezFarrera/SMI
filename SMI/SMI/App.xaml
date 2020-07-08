@@ -22,11 +22,11 @@
             <Setter Property="FontAttributes" Value="Bold"/>
             <Setter Property="HorizontalOptions" Value="Center"/>
             <Setter Property="TextColor" Value="#3E3F68"/>
-        </Style> 
-        
-        <Style x:Key="LabelAzulMediano" TargetType="Label">
+        </Style>
+
+        <Style x:Key="LabelCambiarFoto" TargetType="Label">
             <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
-            <Setter Property="FontSize" Value="Title"/>
+            <Setter Property="FontSize" Value="13"/>
             <Setter Property="HorizontalOptions" Value="Center"/>
             <Setter Property="TextColor" Value="#013B6B"/>
             <Setter Property="VerticalOptions" Value="Center"/>
