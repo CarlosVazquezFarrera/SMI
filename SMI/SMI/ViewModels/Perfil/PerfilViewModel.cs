@@ -61,6 +61,16 @@
                 return new RelayCommand(TomarFoto);
             }
         }
+        /// <summary>
+        ///  Abre la galería para seleccionar una foto
+        /// </summary>
+        public ICommand AbriGaleriaCommand
+        {
+            get
+            {
+                return new RelayCommand(AbriGaleria);
+            }
+        }
         #endregion
 
         #region Methods
@@ -92,8 +102,23 @@
         private async void TomarFoto()
         {
             var response = await Camara.TomarFoto();
-            var foto = response.Data;
-            await PopUp.PopAllPopUps();
+            if (response.Result)
+            {
+                var foto = response.Data;
+                await PopUp.PopAllPopUps();
+            }
+        }
+        private async void AbriGaleria()
+        {
+            var response = await Camara.AbriGaleria();
+
+            if (response.Result)
+            {
+                var foto = response.Data;
+                await PopUp.PopAllPopUps();
+            }
+            
+            
         }
 
         #endregion

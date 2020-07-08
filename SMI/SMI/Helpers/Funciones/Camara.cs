@@ -1,13 +1,10 @@
 ﻿namespace SMI.Helpers.Funciones
 {
-    using FFImageLoading;
     using Plugin.Media;
     using Plugin.Media.Abstractions;
     using SMI.Models;
     using System;
-    using System.IO;
     using System.Threading.Tasks;
-    using Xamarin.Forms;
 
     public class Camara
     {
@@ -31,11 +28,8 @@
                     var foto = await CrossMedia.Current.TakePhotoAsync(opcionesCamara);
                     if (foto != null)
                     {
-                        Stream stream = foto.GetStream();
-                        Byte[] data = new Byte[stream.Length];
-                        await stream.ReadAsync(data, 0, (int)stream.Length);
-                        string base64 = Convert.ToBase64String(data);
-                        respuesta.Data = base64;
+                        respuesta.Data = await Converter.ConvertStremToBase64(foto.GetStream());
+                        respuesta.Result = true;
                     }
                 }
                 catch (Exception)
@@ -43,10 +37,36 @@
                     respuesta.Data = "Ocurrió un error al tomar la foto";
                 }
             }
-            respuesta.Result = true;
             return respuesta;
         }
 
+        public async static Task<Response> AbriGaleria()
+        {
+            IsPossible();
+            if (respuesta.Result)
+            {
+                respuesta.Result = false;
+                try
+                {
+                    PickMediaOptions opcionesCamara = new PickMediaOptions
+                    {
+                        CompressionQuality = 50,
+                        PhotoSize = PhotoSize.Full
+                    };
+                    var foto = await CrossMedia.Current.PickPhotoAsync(opcionesCamara);
+                    if (foto != null)
+                    {
+                        respuesta.Data = await Converter.ConvertStremToBase64(foto.GetStream());
+                        respuesta.Result = true;
+                    }
+                }
+                catch (Exception)
+                {
+                    respuesta.Data = "Ocurrió un error al tomar la foto";
+                }
+            }
+            return respuesta;
+        }
         private static Response IsPossible()
         {
             if (!CrossMedia.Current.IsCameraAvailable)
