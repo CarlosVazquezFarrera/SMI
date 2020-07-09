@@ -43,7 +43,11 @@
                 <!--quitar foto-->
                 <Image Grid.Column="0"
                        Grid.Row="1"
-                       Source="quitarfoto.png"/>
+                       Source="quitarfoto.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding QuitarImagenCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
                 <Label Grid.Column="0"
                        Grid.Row="3"
                        Style="{StaticResource LabelCambiarFoto}"

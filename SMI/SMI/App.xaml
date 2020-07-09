@@ -15,52 +15,85 @@
             <Setter Property="BackgroundColor" Value="Transparent"/>
             <Setter Property="HorizontalOptions" Value="Start"/>
         </Style>
-        
-        <Style x:Key="LabelPerfilGrande" TargetType="Label">
-            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
-            <Setter Property="FontSize" Value="Large"/>
-            <Setter Property="FontAttributes" Value="Bold"/>
-            <Setter Property="HorizontalOptions" Value="Center"/>
-            <Setter Property="TextColor" Value="#3E3F68"/>
-        </Style>
 
-        <Style x:Key="LabelCambiarFoto" TargetType="Label">
+        <Style x:Key="LabelBase" TargetType="Label">
             <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
-            <Setter Property="FontSize" Value="13"/>
+        </Style>
+        
+        <Style BasedOn="{StaticResource LabelBase}" 
+               TargetType="Label"
+               x:Key="LabelBaseVerticalHorizontalCenter">
             <Setter Property="HorizontalOptions" Value="Center"/>
-            <Setter Property="TextColor" Value="#013B6B"/>
             <Setter Property="VerticalOptions" Value="Center"/>
         </Style>
-        
-        <Style x:Key="LabelPerfil" TargetType="Label">
-            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
+
+        <Style BasedOn="{StaticResource LabelBase}" 
+               TargetType="Label"
+               x:Key="LabelBaseVerticalCenter">
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+
+        <Style BasedOn="{StaticResource LabelBaseVerticalHorizontalCenter}"
+               TargetType="Label"
+               x:Key="LabelBaseVHCenterAzul" >
+            <Setter Property="TextColor" Value="#3E3F68"/>
+        </Style>
+        <Style BasedOn="{StaticResource LabelBaseVerticalCenter}"
+               TargetType="Label"
+               x:Key="LabelBaseVCenterAzul" >
+            <Setter Property="TextColor" Value="#3E3F68"/>
+        </Style>
+        <Style BasedOn="{StaticResource LabelBaseVHCenterAzul}" 
+               TargetType="Label"
+               x:Key="LabelAzulPage" >
+            <Setter Property="FontSize" Value="Large"/>
+        </Style>
+
+        <Style BasedOn="{StaticResource LabelBaseVHCenterAzul}" 
+               TargetType="Label"
+               x:Key="LabelPerfilGrande" >
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <Style BasedOn="{StaticResource LabelBaseVCenterAzul}" 
+               TargetType="Label"
+               x:Key="LabelPerfilOtros">
             <Setter Property="FontSize" Value="18"/>
-            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Padding" Value="25, 5, 0, 5"/>
+        </Style>
+
+        <Style BasedOn="{StaticResource LabelBaseVerticalHorizontalCenter}"
+               TargetType="Label"
+               x:Key="LabelCambiarFoto" >
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="TextColor" Value="#013B6B"/>
+        </Style>
+
+        <Style BasedOn="{StaticResource LabelBaseVerticalHorizontalCenter}"
+               TargetType="Label"
+               x:Key="LabelPerfil" >
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="TextColor" Value="#6E7FAA"/>
         </Style>
 
-        <Style x:Key="LabelPerfilOtros" TargetType="Label">
-            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Padding" Value="25, 5, 0, 5"/>
-            <Setter Property="VerticalOptions" Value="Center"/>
-            <Setter Property="TextColor" Value="#3E3F68"/>
-        </Style>
 
-        <Style x:Key="LabelPerfilOtrosRojo" TargetType="Label">
-            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
+
+        <Style BasedOn="{StaticResource LabelBaseVerticalCenter}"
+               TargetType="Label"
+               x:Key="LabelPerfilOtrosRojo" >
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Padding" Value="25, 5, 0, 5"/>
-            <Setter Property="VerticalOptions" Value="Center"/>
             <Setter Property="TextColor" Value="#C40D26"/>
         </Style>
-        
-        <Style x:Key="LabalFrame" TargetType="Label">
-            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
+
+        <Style BasedOn="{StaticResource LabelBaseVerticalCenter}"
+               TargetType="Label"
+               x:Key="LabalFrame" >
             <Setter Property="FontSize" Value="18"/>
-            <Setter Property="VerticalOptions" Value="Center"/>
             <Setter Property="TextColor" Value="#7695ae"/>
         </Style>
+        
         <Style x:Key="PopUp" TargetType="popup:PopupPage">
             <Setter Property="BackgroundColor"     Value = "#d3d3d3FF"/>
             <Setter Property="CloseWhenBackgroundIsClicked" Value="False"/>
@@ -93,15 +126,9 @@
             <Setter Property="VerticalOptions" Value="Center"/>
         </Style>
 
-        <Style x:Key="BotonAzulMargin" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="#013B6B"/>
-            <Setter Property="BorderColor" Value="#D2A92D"/>
-            <Setter Property="BorderWidth" Value="1.5"/>
-            <Setter Property="CornerRadius" Value="15"/>
-            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="TextColor" Value="White"/>
-            <Setter Property="VerticalOptions" Value="Center"/>
+        <Style BasedOn="{StaticResource BotonAzul}" 
+               TargetType="Button"
+               x:Key="BotonAzulMargin" >
             <Setter Property="Margin" Value="25, 0"/>
         </Style>
     </Application.Resources>

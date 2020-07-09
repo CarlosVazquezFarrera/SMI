@@ -80,6 +80,16 @@
                 return new RelayCommand(AbriGaleria);
             }
         }
+        /// <summary>
+        /// Quita la foto de perfil
+        /// </summary>
+        public ICommand QuitarImagenCommand
+        {
+            get
+            {
+                return new RelayCommand(QuitarImagen);
+            }
+        }
         #endregion
 
         #region Methods
@@ -128,6 +138,15 @@
                 Foto = Converter.ConvertBase64ToImageSource(dataFoto);
                 await PopUp.PopAllPopUps();
             }
+        }
+        private async void QuitarImagen()
+        {
+           // if (!string.IsNullOrEmpty(Configuracion.FotoDePerfil))
+            //{
+                Foto = "fotoBase.png";
+                //Igualar la foto de configuraciones a string en blanco
+            //}
+            await PopUp.PopAllPopUps();
         }
 
         #endregion
