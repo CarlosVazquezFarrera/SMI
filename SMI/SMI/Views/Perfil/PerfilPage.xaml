@@ -9,7 +9,6 @@
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:UC="clr-namespace:SMI.UC"
              IconImageSource="perfil.png"
-             xmlns:Instancia="clr-namespace:SMI.ViewModels.Perfil"
              Style="{StaticResource StackApp}">
     <ContentPage.Content>
         <Grid Margin="0, 10, 0, 0">
@@ -18,29 +17,27 @@
                 <ColumnDefinition Width=".25*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition />
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <!--Imagen de perfil-->
-            <ffimageloading:CachedImage Aspect="AspectFit" 
-                                        DownsampleToViewSize="False"
-                                        ErrorPlaceholder="fotoBase.png" 
-                                        Grid.ColumnSpan="2"
-                                        HorizontalOptions="Center" 
-                                        LoadingPlaceholder="loading.png" 
-                                        Source="prueba.png"
-                                        VerticalOptions="Center"
-                                        WidthRequest="300">
-                <ffimageloading:CachedImage.Transformations>
-                    <fftransformations:CircleTransformation/>
-                </ffimageloading:CachedImage.Transformations>
-            </ffimageloading:CachedImage>
+            <Frame CornerRadius="100"
+                   Grid.ColumnSpan="2"
+                   HorizontalOptions="Center"
+                   IsClippedToBounds="True"
+                   Padding="0">
+                <Image Aspect="AspectFit"
+                       HorizontalOptions="Center" 
+                       Source="{Binding Foto}"
+                       VerticalOptions="Center">
+                </Image>
+            </Frame>
             <!--Cargar Imagen-->
             <ffimageloading:CachedImage Aspect="AspectFit" 
                                         Grid.Column="0"

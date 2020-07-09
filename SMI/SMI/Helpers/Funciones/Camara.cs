@@ -20,6 +20,7 @@
                 {
                     StoreCameraMediaOptions opcionesCamara = new StoreCameraMediaOptions
                     {
+                        Directory = "SMI",
                         CompressionQuality = 50,
                         PhotoSize = PhotoSize.Full,
                         SaveToAlbum = true,

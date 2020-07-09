@@ -2,22 +2,31 @@
 {
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using SMI.Helpers;
     using SMI.Helpers.Funciones;
     using SMI.OS;
     using SMI.OS.Keys;
     using System.Windows.Input;
+    using Xamarin.Forms;
 
     public class PerfilViewModel: ViewModelBase
     {
         #region Constructor
         private PerfilViewModel()
         {
-
+            Foto = string.IsNullOrEmpty(Configuracion.FotoDePerfil) ? "fotoBase.png" : Converter.ConvertBase64ToImageSource(Configuracion.FotoDePerfil);   
         }
         #endregion
 
         #region Atributo
-        private static PerfilViewModel instancia; 
+        private static PerfilViewModel instancia;
+
+        private ImageSource foto;
+        public ImageSource Foto
+        {
+            get { return this.foto; }
+            set { Set(ref this.foto, value); }
+        }
         #endregion
 
         #region Commands
@@ -104,7 +113,8 @@
             var response = await Camara.TomarFoto();
             if (response.Result)
             {
-                var foto = response.Data;
+                string dataFoto = response.Data.ToString();
+                Foto = Converter.ConvertBase64ToImageSource(dataFoto);
                 await PopUp.PopAllPopUps();
             }
         }
@@ -114,11 +124,10 @@
 
             if (response.Result)
             {
-                var foto = response.Data;
+                string dataFoto = response.Data.ToString();
+                Foto = Converter.ConvertBase64ToImageSource(dataFoto);
                 await PopUp.PopAllPopUps();
             }
-            
-            
         }
 
         #endregion
