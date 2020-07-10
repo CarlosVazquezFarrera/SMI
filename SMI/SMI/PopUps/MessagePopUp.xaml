@@ -21,10 +21,21 @@
             HasBackgroundAnimation="True"/>
     </popup:PopupPage.Animation>
     <ContentPage.Content>
-        <Frame VerticalOptions="CenterAndExpand"
+        <Frame BorderColor="Black" 
+               CornerRadius="25" 
+               VerticalOptions="CenterAndExpand"
                HorizontalOptions="CenterAndExpand">
             <StackLayout>
-                <Label Text="Pruevba"/>
+                <Label Text="{Binding Mensaje}"
+                       Style="{StaticResource LabelAzulPopUp}"/>
+                <BoxView HorizontalOptions="FillAndExpand" 
+                         HeightRequest="1" 
+                         Color="#D2A92D"/>
+                <!--<Line BackgroundColor="#D2A92D"
+                      HorizontalOptions="FillAndExpand"/>-->
+                <Button Command="{Binding CerrarPopUpCommand}"
+                        Style="{StaticResource BotonLetraAzul}"
+                        Text="Aceptar"/>
             </StackLayout>
         </Frame>
     </ContentPage.Content>

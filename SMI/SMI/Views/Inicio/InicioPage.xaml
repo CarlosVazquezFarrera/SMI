@@ -6,12 +6,10 @@
              mc:Ignorable="d"
              x:Class="SMI.Views.Inicio.InicioPage"
              xmlns:ViewModel="clr-namespace:SMI.ViewModels.Inicio">
-    <ContentPage.BindingContext>
-        <ViewModel:InicioViewModel/>
-    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
         <StackLayout>
-            <CollectionView ItemsSource="{Binding Empleados}">
+            <!--<CollectionView ItemsSource="{Binding Empleados}">
                 <CollectionView.EmptyViewTemplate>
                     <DataTemplate>
                         <Grid>
@@ -41,7 +39,7 @@
                         <Span Text="{Binding Nombre}"/>
                     </FormattedString>
                 </Label.FormattedText>
-            </Label>
+            </Label>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

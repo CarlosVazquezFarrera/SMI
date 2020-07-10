@@ -6,6 +6,7 @@ namespace SMI.Models
 {
     public class Empleado
     {
-        public string Nombre { get; set; }
+        public string User { get; set; }
+        public string Password { get; set; }
     }
 }

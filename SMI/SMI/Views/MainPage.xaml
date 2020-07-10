@@ -7,6 +7,7 @@
              x:Class="SMI.MainPage"
              xmlns:ViewModel="clr-namespace:SMI.ViewModels"
              NavigationPage.HasNavigationBar="False"
+             Style="{StaticResource StackApp}"
              xmlns:UC="clr-namespace:SMI.UC">
     <ContentPage.BindingContext>
         <ViewModel:MainViewModel/>
@@ -34,6 +35,7 @@
                              Grid.ColumnSpan="2"
                              Icono="user.png"
                              PlaceHolder="Usuario"
+                             Text="{Binding Empleado.User}"
                              Keyboard="Text"/>
 
         <!--Contraseña-->
@@ -43,6 +45,7 @@
                              Icono="passwprd.png"
                              IsPassword="True"
                              PlaceHolder="Contraseña"
+                             Text="{Binding Empleado.Password}"
                              Keyboard="Text"/>
 
 

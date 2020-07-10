@@ -5,10 +5,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="SMI.App"
-             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core">
     <Application.Resources>
+        
         <Style x:Key="StackApp" TargetType="ContentPage">
             <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="ios:Page.UseSafeArea" Value="True"/>
         </Style>
         
         <Style x:Key="atrasBoton" TargetType="Button">
@@ -36,12 +39,12 @@
         <Style BasedOn="{StaticResource LabelBaseVerticalHorizontalCenter}"
                TargetType="Label"
                x:Key="LabelBaseVHCenterAzul" >
-            <Setter Property="TextColor" Value="#3E3F68"/>
+            <Setter Property="TextColor" Value="#013B6B"/>
         </Style>
         <Style BasedOn="{StaticResource LabelBaseVerticalCenter}"
                TargetType="Label"
                x:Key="LabelBaseVCenterAzul" >
-            <Setter Property="TextColor" Value="#3E3F68"/>
+            <Setter Property="TextColor" Value="#013B6B"/>
         </Style>
         <Style BasedOn="{StaticResource LabelBaseVHCenterAzul}" 
                TargetType="Label"
@@ -49,10 +52,11 @@
             <Setter Property="FontSize" Value="Large"/>
         </Style>
 
-        <Style BasedOn="{StaticResource LabelBaseVHCenterAzul}" 
+        <Style BasedOn="{StaticResource LabelBaseVerticalHorizontalCenter}" 
                TargetType="Label"
                x:Key="LabelPerfilGrande" >
             <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="TextColor" Value="#3E3F68"/>
             <Setter Property="FontAttributes" Value="Bold"/>
         </Style>
 
@@ -76,7 +80,11 @@
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="TextColor" Value="#6E7FAA"/>
         </Style>
-
+        <Style BasedOn="{StaticResource LabelBaseVHCenterAzul}"
+               TargetType="Label"
+               x:Key="LabelAzulPopUp" >
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
 
 
         <Style BasedOn="{StaticResource LabelBaseVerticalCenter}"
@@ -113,6 +121,13 @@
 
         <Style x:Key="BotonTransparente" TargetType="Button">
             <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+        
+        <Style x:Key="BotonLetraAzul" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="TextColor" Value="#013B6B"/>
+            <Setter Property="FontFamily" Value="BAHNSCHRIFT"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>
 
         <Style x:Key="BotonAzul" TargetType="Button">

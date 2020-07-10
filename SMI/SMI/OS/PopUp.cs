@@ -4,9 +4,9 @@
     using Rg.Plugins.Popup.Services;
     using SMI.OS.Keys;
     using SMI.PopUps;
+    using SMI.ViewModels.PopUps;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Security.Cryptography;
     using System.Threading.Tasks;
     public static class PopUp
     {
@@ -19,11 +19,18 @@
         {
             switch (page)
             {
-                case PopUpKeys.Mensaje:
-                    await IsPopUpInstanced(new MessagePopUp());
-                    break;
                 case PopUpKeys.CambiarFoto:
                     await IsPopUpInstanced(new CambiarFotoPopUp());
+                    break;
+            }
+        }
+        public static async Task PushPopUp(string page, params object[] param)
+        {
+            switch (page)
+            {
+                case PopUpKeys.Mensaje:
+                    MessageViewModel.GetInstance().Mensaje = param[0].ToString();
+                    await IsPopUpInstanced(new MessagePopUp());
                     break;
             }
         }

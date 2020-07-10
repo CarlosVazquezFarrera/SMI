@@ -1,15 +1,11 @@
-﻿using System;
-
-using Android.App;
-using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.OS;
-using Plugin.CurrentActivity;
-
-namespace SMI.Droid
+﻿namespace SMI.Droid
 {
+    using Android.App;
+    using Android.Content.PM;
+    using Android.OS;
+    using Android.Runtime;
+    using Plugin.CurrentActivity;
+    using Xamarin.Forms;
     [Activity(Label = "SMI", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
@@ -19,7 +15,7 @@ namespace SMI.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-
+            Forms.SetFlags("Shapes_Experimental");
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);

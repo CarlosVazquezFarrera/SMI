@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
-using UIKit;
-
-namespace SMI.iOS
+﻿namespace SMI.iOS
 {
+    using Foundation;
+    using UIKit;
+    using Xamarin.Forms;
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
@@ -24,6 +20,7 @@ namespace SMI.iOS
         {
             Rg.Plugins.Popup.Popup.Init();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+            Forms.SetFlags("Shapes_Experimental")
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

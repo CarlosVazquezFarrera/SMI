@@ -3,6 +3,7 @@
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using SMI.Helpers;
+    using SMI.Models;
     using SMI.OS;
     using SMI.OS.Keys;
     using System.Windows.Input;
@@ -16,6 +17,8 @@
 
         #region Attributes
         private bool mantenerSesion;
+        private readonly Response response = new Response();
+        private Empleado empleado = new Empleado();
         #endregion
 
         #region Properties
@@ -29,6 +32,11 @@
                 Set(ref this.mantenerSesion, value);
                 Configuracion.MantenerSesion = value;
             }
+        }
+        public Empleado Empleado
+        {
+            get { return this.empleado; }
+            set { Set(ref this.empleado, value); }
         }
         #endregion
 
@@ -45,9 +53,34 @@
         #region Methos
         private async void Login()
         {
-            await Navigation.NavigateTo(PagesKeys.RootTabbed);
+            IsValidate();
+            if (response.Result)
+            {
+                await Navigation.NavigateTo(PagesKeys.RootTabbed);
+            }
+            else
+            {
+                await PopUp.PushPopUp(PopUpKeys.Mensaje, response.Data);
+            }
             //await PopUp.PushPopUp(PopUpKeys.Mensaje);
         }
+
+        private Response IsValidate()
+        {
+            if (string.IsNullOrEmpty(Empleado.User))
+            {
+                response.Data = "Debe ingresar un usuario";
+                return response;
+            }
+            if (string.IsNullOrEmpty(Empleado.Password))
+            {
+                response.Data = "Debe ingresar una contraseña";
+                return response;
+            }
+            response.Result = true;
+            return response;
+        }
+
         #endregion
     }
 }
