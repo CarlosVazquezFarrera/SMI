@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.3" />
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.1" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
@@ -57,10 +58,5 @@
     <EmbeddedResource Update="Views\RootTabbed.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Infrastructure\Services\" />
-    <Folder Include="ViewModels\Inicio\" />
   </ItemGroup>
 </Project>
