@@ -23,8 +23,8 @@
         }
         #endregion
 
-        #region Propiedades
-        public string UrlBaseWebApi { get; set; } = "http://192.168.0.15:45457/api/";
+        #region Properties
+        public string UrlBaseWebApi { get; set; } = "http://192.168.0.15:45455/api/";
 
         string urlController;
         protected string UrlController
@@ -40,7 +40,7 @@
         #endregion
 
 
-        #region Metodos
+        #region Methods
         void InitHeaders()
         {
             DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -81,7 +81,7 @@
             try
             {
                 //Validar que haya conexion
-                    var res = await PostAsync(url, new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(req), System.Text.Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                    var res = await PostAsync(url, new StringContent(JsonConvert.SerializeObject(req), System.Text.Encoding.UTF8, "application/json")).ConfigureAwait(false);
                     return ProcessResponse<TResponse>(res);
             }
             catch (Exception)

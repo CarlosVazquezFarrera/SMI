@@ -3,6 +3,7 @@
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using SMI.Helpers;
+    using SMI.Infrastructure.BL;
     using SMI.Models;
     using SMI.OS;
     using SMI.OS.Keys;
@@ -19,6 +20,7 @@
         private bool mantenerSesion;
         private readonly Response response = new Response();
         private Empleado empleado = new Empleado();
+        LoginBL bl = new LoginBL();
         #endregion
 
         #region Properties
@@ -54,30 +56,42 @@
         private async void Login()
         {
             IsValidate();
-            if (response.Result)
+            if (response.Exito)
             {
-                await Navigation.NavigateTo(PagesKeys.RootTabbed);
+                await PopUp.PushPopUp(PopUpKeys.Cargando, "Iniciando sesión");
+                var response = await bl.Login(empleado);
+                if (response.Exito)
+                {
+                    await Navigation.NavigateTo(PagesKeys.RootTabbed);
+                    await PopUp.PopAllPopUps();
+                }
+                else
+                {
+                    await PopUp.PopAllPopUps();
+                    await PopUp.PushPopUp(PopUpKeys.Mensaje, response.Mensaje);
+                }
+                
             }
             else
             {
-                await PopUp.PushPopUp(PopUpKeys.Mensaje, response.Data);
+                await PopUp.PushPopUp(PopUpKeys.Mensaje, response.Mensaje);
             }
             //await PopUp.PushPopUp(PopUpKeys.Mensaje);
         }
 
         private Response IsValidate()
         {
-            if (string.IsNullOrEmpty(Empleado.User))
+            if (string.IsNullOrEmpty(Empleado.Email))
             {
-                response.Data = "Debe ingresar un usuario";
+                response.Mensaje = "Debe ingresar un usuario";
                 return response;
             }
             if (string.IsNullOrEmpty(Empleado.Password))
             {
-                response.Data = "Debe ingresar una contraseña";
+                response.Mensaje = "Debe ingresar una contraseña";
                 return response;
             }
-            response.Result = true;
+            response.Exito = true;
             return response;
         }
 

@@ -2,7 +2,8 @@
 {
     public class Response
     {
-        public bool Result { get; set; }
+        public bool Exito { get; set; }
+        public string Mensaje { get; set; }
         public object Data { get; set; }
     }
 }

@@ -8,16 +8,10 @@
 
     public class PendientesViewModel: ViewModelBase
     {
-        LoginBL bl = new LoginBL();
+        
         public PendientesViewModel()
         {
-            cargar();
-        }
-
-        private async void cargar()
-        {
-            var listaBl = await bl.Login();
-            Lista = new ObservableCollection<WeatherForecast>(listaBl);
+           
         }
 
         private ObservableCollection<WeatherForecast> lista;

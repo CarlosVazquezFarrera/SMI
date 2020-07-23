@@ -35,7 +35,7 @@
                              Grid.ColumnSpan="2"
                              Icono="user.png"
                              PlaceHolder="Usuario"
-                             Text="{Binding Empleado.User}"
+                             Text="{Binding Empleado.Email}"
                              Keyboard="Text"/>
 
         <!--Contraseña-->

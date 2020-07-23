@@ -10,7 +10,7 @@ namespace SMI.ViewModels.PopUps
         }
         #endregion
 
-        #region Atributo
+        #region Atributes
         /// <summary>
         /// Instancia del ViewModel para el patron singleton
         /// </summary>
@@ -21,7 +21,7 @@ namespace SMI.ViewModels.PopUps
         private string mensaje;
         #endregion
 
-        #region Propiedad
+        #region Properties
         public string Mensaje
         {
             get { return this.mensaje; }

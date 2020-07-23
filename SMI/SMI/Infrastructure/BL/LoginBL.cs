@@ -11,22 +11,22 @@
     {
         private readonly LoginService service = new LoginService();
 
-        public async Task<List<WeatherForecast>> Login()
+        public async Task<Response> Login(Empleado empleado)
         {
-            List<WeatherForecast> lista = new List<WeatherForecast>();
+            Response response = new Response();
             try
             {
-                var (status, data) = await service.Login();
+                var (status, data) = await service.Login(empleado);
                 if(status == HttpStatusCode.OK)
                 {
-                    lista = (List<WeatherForecast>)data;
+                    response =  data;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
-            return lista;
+            return response;
         }
     }
 }

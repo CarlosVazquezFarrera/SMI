@@ -121,7 +121,7 @@
         private async void TomarFoto()
         {
             var response = await Camara.TomarFoto();
-            if (response.Result)
+            if (response.Exito)
             {
                 string dataFoto = response.Data.ToString();
                 Foto = Converter.ConvertBase64ToImageSource(dataFoto);
@@ -132,7 +132,7 @@
         {
             var response = await Camara.AbriGaleria();
 
-            if (response.Result)
+            if (response.Exito)
             {
                 string dataFoto = response.Data.ToString();
                 Foto = Converter.ConvertBase64ToImageSource(dataFoto);

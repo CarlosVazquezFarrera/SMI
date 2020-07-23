@@ -32,6 +32,10 @@
                     MessageViewModel.GetInstance().Mensaje = param[0].ToString();
                     await IsPopUpInstanced(new MessagePopUp());
                     break;
+                case PopUpKeys.Cargando:
+                    CargandoViewModel.GetInstance().Mensaje = param[0].ToString();
+                    await IsPopUpInstanced(new CargandoPopUp());
+                    break;
             }
         }
 

@@ -13,9 +13,9 @@
         public async static Task<Response> TomarFoto()
         {
             IsPossible();
-            if (respuesta.Result)
+            if (respuesta.Exito)
             {
-                respuesta.Result = false;
+                respuesta.Exito = false;
                 try
                 {
                     StoreCameraMediaOptions opcionesCamara = new StoreCameraMediaOptions
@@ -30,7 +30,7 @@
                     if (foto != null)
                     {
                         respuesta.Data = await Converter.ConvertStremToBase64(foto.GetStream());
-                        respuesta.Result = true;
+                        respuesta.Exito = true;
                     }
                 }
                 catch (Exception)
@@ -44,9 +44,9 @@
         public async static Task<Response> AbriGaleria()
         {
             IsPossible();
-            if (respuesta.Result)
+            if (respuesta.Exito)
             {
-                respuesta.Result = false;
+                respuesta.Exito = false;
                 try
                 {
                     PickMediaOptions opcionesCamara = new PickMediaOptions
@@ -58,7 +58,7 @@
                     if (foto != null)
                     {
                         respuesta.Data = await Converter.ConvertStremToBase64(foto.GetStream());
-                        respuesta.Result = true;
+                        respuesta.Exito = true;
                     }
                 }
                 catch (Exception)
@@ -85,7 +85,7 @@
                 respuesta.Data = "No se pudo abrir la galería. Revise los permisos";
                 return respuesta;
             }
-            respuesta.Result = true;
+            respuesta.Exito = true;
             return respuesta;
         }
     }
