@@ -70,13 +70,13 @@
                     await PopUp.PopAllPopUps();
                     await PopUp.PushPopUp(PopUpKeys.Mensaje, response.Mensaje);
                 }
-                
+
             }
             else
             {
                 await PopUp.PushPopUp(PopUpKeys.Mensaje, response.Mensaje);
             }
-            //await PopUp.PushPopUp(PopUpKeys.Mensaje);
+            await PopUp.PushPopUp(PopUpKeys.Mensaje);
         }
 
         private Response IsValidate()
