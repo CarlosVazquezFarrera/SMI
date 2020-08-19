@@ -12,15 +12,18 @@
     public class PerfilViewModel: ViewModelBase
     {
         #region Constructor
-        private PerfilViewModel()
+        public PerfilViewModel()
         {
-            Foto = string.IsNullOrEmpty(Configuracion.FotoDePerfil) ? "fotoBase.png" : Converter.ConvertBase64ToImageSource(Configuracion.FotoDePerfil);   
+            //Mover a holpers despues
+            Foto = string.IsNullOrEmpty(Configuracion.FotoDePerfil) ? "fotoBase.png" : Converter.ConvertBase64ToImageSource(Configuracion.FotoDePerfil);
+            MessagingCenter.Subscribe<ImageSource>(this, "enviarFoto", (imagen) =>
+            {
+                Foto = imagen;
+            });
         }
         #endregion
 
         #region Atributo
-        private static PerfilViewModel instancia;
-
         private ImageSource foto;
         public ImageSource Foto
         {
@@ -60,51 +63,9 @@
                 return new RelayCommand(CambiarFoto);
             }
         }
-       /// <summary>
-       /// Toma la foto de la cámara
-       /// </summary>
-        public ICommand TomarFotoCommand
-        {
-            get
-            {
-                return new RelayCommand(TomarFoto);
-            }
-        }
-        /// <summary>
-        ///  Abre la galería para seleccionar una foto
-        /// </summary>
-        public ICommand AbriGaleriaCommand
-        {
-            get
-            {
-                return new RelayCommand(AbriGaleria);
-            }
-        }
-        /// <summary>
-        /// Quita la foto de perfil
-        /// </summary>
-        public ICommand QuitarImagenCommand
-        {
-            get
-            {
-                return new RelayCommand(QuitarImagen);
-            }
-        }
         #endregion
 
         #region Methods
-        /// <summary>
-        /// Patron singleton
-        /// </summary>
-        /// <returns></returns>
-        public static PerfilViewModel GetInstance()
-        {
-            if (instancia == null)
-            {
-                instancia = new PerfilViewModel();
-            }
-            return instancia;
-        }
         private async void CambiarPassword()
         {
             await Navigation.NavigateTo(PagesKeys.CambiasPassword);
@@ -118,37 +79,6 @@
         {
             await PopUp.PushPopUp(PopUpKeys.CambiarFoto);
         }
-        private async void TomarFoto()
-        {
-            var response = await Camara.TomarFoto();
-            if (response.Exito)
-            {
-                string dataFoto = response.Data.ToString();
-                Foto = Converter.ConvertBase64ToImageSource(dataFoto);
-                await PopUp.PopAllPopUps();
-            }
-        }
-        private async void AbriGaleria()
-        {
-            var response = await Camara.AbriGaleria();
-
-            if (response.Exito)
-            {
-                string dataFoto = response.Data.ToString();
-                Foto = Converter.ConvertBase64ToImageSource(dataFoto);
-                await PopUp.PopAllPopUps();
-            }
-        }
-        private async void QuitarImagen()
-        {
-           // if (!string.IsNullOrEmpty(Configuracion.FotoDePerfil))
-            //{
-                Foto = "fotoBase.png";
-                //Igualar la foto de configuraciones a string en blanco
-            //}
-            await PopUp.PopAllPopUps();
-        }
-
         #endregion
     }
 }

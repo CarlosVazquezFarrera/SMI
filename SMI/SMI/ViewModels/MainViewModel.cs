@@ -13,6 +13,8 @@
         #region Constructor
         public MainViewModel()
         {
+            Empleado.Email = "prueba@gmail.com";
+            Empleado.Password = "12345";
         }
         #endregion
 

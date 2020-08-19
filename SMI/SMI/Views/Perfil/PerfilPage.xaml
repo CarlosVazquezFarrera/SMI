@@ -9,7 +9,11 @@
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:UC="clr-namespace:SMI.UC"
              IconImageSource="perfil.png"
+             xmlns:ViewModel="clr-namespace:SMI.ViewModels.Perfil"
              Style="{StaticResource StackApp}">
+    <ContentPage.BindingContext>
+        <ViewModel:PerfilViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid Margin="0, 10, 0, 0">
             <Grid.ColumnDefinitions>

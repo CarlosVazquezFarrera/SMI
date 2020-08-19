@@ -16,7 +16,7 @@
         /// <returns></returns>
         public async Task<(HttpStatusCode StatusCode, Response respuesta)> Login(Empleado empleado)
         { 
-            return await CallGetAsync<Response>($"login?Email=prueba@gmail.com&Password=12345"); 
+            return await CallGetAsync<Response>($"login?Email={empleado.Email}&Password={empleado.Password}"); 
         }
 
         //public async Task<HttpStatusCode StatusCode, Response>

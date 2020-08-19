@@ -9,7 +9,6 @@
         public CambiarFotoPopUp()
         {
             InitializeComponent();
-            BindingContext = PerfilViewModel.GetInstance();
         }
     }
 }

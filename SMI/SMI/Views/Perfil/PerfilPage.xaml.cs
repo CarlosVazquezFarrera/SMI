@@ -11,7 +11,6 @@ namespace SMI.Views.Perfil
         public PerfilPage()
         {
             InitializeComponent();
-            BindingContext = PerfilViewModel.GetInstance();
         }
     }
 }
