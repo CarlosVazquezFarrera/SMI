@@ -8,6 +8,8 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Xamarin.Forms;
+
     public static class PopUp
     {
         /// <summary>
@@ -26,6 +28,7 @@
         }
         public static async Task PushPopUp(string page, params object[] param)
         {
+            MessagingCenter.Send<string>(param[0].ToString(), "mensajeEnviado");
             switch (page)
             {
                 case PopUpKeys.Mensaje:

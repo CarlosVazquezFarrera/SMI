@@ -8,9 +8,9 @@
 
     public class Camara
     {
-        readonly static Response respuesta = new Response();
+        readonly static Response<string> respuesta = new Response<string>();
 
-        public async static Task<Response> TomarFoto()
+        public async static Task<Response<string>> TomarFoto()
         {
             IsPossible();
             if (respuesta.Exito)
@@ -35,13 +35,13 @@
                 }
                 catch (Exception)
                 {
-                    respuesta.Data = "Ocurrió un error al tomar la foto";
+                    respuesta.Mensaje = "Ocurrió un error al tomar la foto";
                 }
             }
             return respuesta;
         }
 
-        public async static Task<Response> AbriGaleria()
+        public async static Task<Response<string>> AbriGaleria()
         {
             IsPossible();
             if (respuesta.Exito)
@@ -63,26 +63,26 @@
                 }
                 catch (Exception)
                 {
-                    respuesta.Data = "Ocurrió un error al tomar la foto";
+                    respuesta.Mensaje = "Ocurrió un error al tomar la foto";
                 }
             }
             return respuesta;
         }
-        private static Response IsPossible()
+        private static Response<string> IsPossible()
         {
             if (!CrossMedia.Current.IsCameraAvailable)
             {
-                respuesta.Data = "La cámara no está disponible";
+                respuesta.Mensaje = "La cámara no está disponible";
                 return respuesta;
             }
             if (!CrossMedia.Current.IsTakePhotoSupported)
             {
-                respuesta.Data = "No se pudo tomar la foto. Revise los permisos";
+                respuesta.Mensaje = "No se pudo tomar la foto. Revise los permisos";
                 return respuesta;
             }
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {
-                respuesta.Data = "No se pudo abrir la galería. Revise los permisos";
+                respuesta.Mensaje = "No se pudo abrir la galería. Revise los permisos";
                 return respuesta;
             }
             respuesta.Exito = true;

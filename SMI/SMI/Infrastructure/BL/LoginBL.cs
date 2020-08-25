@@ -11,9 +11,9 @@
     {
         private readonly LoginService service = new LoginService();
 
-        public async Task<Response> Login(Empleado empleado)
+        public async Task<Response<Empleado>> Login(Empleado empleado)
         {
-            Response response = new Response();
+            Response<Empleado> response = new Response<Empleado>();
             try
             {
                 var (status, data) = await service.Login(empleado);

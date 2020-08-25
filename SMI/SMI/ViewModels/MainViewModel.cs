@@ -20,7 +20,7 @@
 
         #region Attributes
         private bool mantenerSesion;
-        private readonly Response response = new Response();
+        private readonly Response<string> response = new Response<string>();
         private Empleado empleado = new Empleado();
         LoginBL bl = new LoginBL();
         #endregion
@@ -81,7 +81,7 @@
             await PopUp.PushPopUp(PopUpKeys.Mensaje);
         }
 
-        private Response IsValidate()
+        private Response<string> IsValidate()
         {
             if (string.IsNullOrEmpty(Empleado.Email))
             {

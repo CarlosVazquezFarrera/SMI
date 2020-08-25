@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using SMI.Helpers.Funciones;
 using SMI.OS;
+using SMI.OS.Keys;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -54,6 +55,10 @@ namespace SMI.ViewModels.PopUps
                 EnviarImagen();
                 await PopUp.PopAllPopUps();
             }
+            else
+            {
+                await PopUp.PushPopUp(PopUpKeys.Mensaje, response.Mensaje);
+            }
         }
         private async void AbriGaleria()
         {
@@ -65,6 +70,10 @@ namespace SMI.ViewModels.PopUps
                 Foto = Converter.ConvertBase64ToImageSource(dataFoto);
                 EnviarImagen();
                 await PopUp.PopAllPopUps();
+            }
+            else
+            {
+                await PopUp.PushPopUp(PopUpKeys.Mensaje, response.Mensaje);
             }
         }
         private async void QuitarImagen()

@@ -1,12 +1,13 @@
-﻿namespace SMI.ViewModels.PopUps
+﻿using System;
+using Xamarin.Forms;
+
+namespace SMI.ViewModels.PopUps
 {
     public class CargandoViewModel: BaseViewModel
     {
         #region Contructor
         private CargandoViewModel()
-        {
-
-        }
+        {}
         #endregion
 
         #region Atributes

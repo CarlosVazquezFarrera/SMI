@@ -14,9 +14,9 @@
         /// Obtiene la data de prueba
         /// </summary>
         /// <returns></returns>
-        public async Task<(HttpStatusCode StatusCode, Response respuesta)> Login(Empleado empleado)
+        public async Task<(HttpStatusCode StatusCode, Response<Empleado> respuesta)> Login(Empleado empleado)
         { 
-            return await CallGetAsync<Response>($"login?Email={empleado.Email}&Password={empleado.Password}"); 
+            return await CallGetAsync<Response<Empleado>>($"login?Email={empleado.Email}&Password={empleado.Password}"); 
         }
 
         //public async Task<HttpStatusCode StatusCode, Response>
