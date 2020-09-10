@@ -15,9 +15,13 @@ namespace SMI.UC
         public EntryRedondo()
         {
             InitializeComponent();
-            this.Text = this.Entry.Text;
+            this.Entry.TextChanged += (s, e) =>
+            {
+                this.Text = this.Entry.Text;
+            };
         }
 
+        #region Attributes
         /// <summary>
         /// Estilo que utilizará el control
         /// </summary>
@@ -35,12 +39,6 @@ namespace SMI.UC
             get => (string)GetValue(IconoProperty);
             set => SetValue(IconoProperty, value);
         }
-        public static readonly BindableProperty IconoProperty = BindableProperty.Create(nameof(Icono), typeof(ImageSource), typeof(EntryRedondo), default(string), defaultBindingMode: BindingMode.TwoWay,
-        propertyChanged: (bindable, oldValue, newValue) =>
-        {
-            var imagen = (EntryRedondo)bindable;
-            imagen.Icon.Source = (ImageSource)newValue;
-        });
 
         /// <summary>
         /// El texto que se introduce en el Entry
@@ -51,12 +49,7 @@ namespace SMI.UC
             get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
-        public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(EntryRedondo), default(string), defaultBindingMode: BindingMode.TwoWay,
-        propertyChanged: (bindable, oldValue, newValue) =>
-        {
-            var entry = (EntryRedondo)bindable;
-            entry.Entry.Text = (string)newValue;
-        });
+
 
         /// <summary>
         /// PlaceHolder del entry
@@ -66,12 +59,6 @@ namespace SMI.UC
             get => (string)GetValue(PlaceholderProperty);
             set => SetValue(PlaceholderProperty, value);
         }
-        public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(EntryRedondo), default(string),
-        propertyChanged: (bindable, oldValue, newValue) =>
-        {
-            var entry = (EntryRedondo)bindable;
-            entry.Entry.Placeholder = (string)newValue;
-        });
         /// <summary>
         /// Define si el entry es Pasword o no
         /// </summary>
@@ -80,12 +67,6 @@ namespace SMI.UC
             get => (bool)GetValue(IsPasswordProperty);
             set => SetValue(IsPasswordProperty, value);
         }
-        public static readonly BindableProperty IsPasswordProperty = BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(EntryRedondo), default(bool),
-        propertyChanged: (bindable, oldValue, newValue) =>
-        {
-            var entry = (EntryRedondo)bindable;
-            entry.Entry.IsPassword = (bool)newValue;
-        });
         /// <summary>
         /// Define el tipo de teclado del control
         /// </summary>
@@ -94,6 +75,38 @@ namespace SMI.UC
             get => (Keyboard)GetValue(KeyboardProperty);
             set => SetValue(KeyboardProperty, value);
         }
+
+        #endregion
+
+        #region Properties
+        public static readonly BindableProperty IsPasswordProperty = BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(EntryRedondo), default(bool),
+       propertyChanged: (bindable, oldValue, newValue) =>
+       {
+           var entry = (EntryRedondo)bindable;
+           entry.Entry.IsPassword = (bool)newValue;
+       });
+
+        public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(EntryRedondo), default(string),
+        propertyChanged: (bindable, oldValue, newValue) =>
+        {
+            var entry = (EntryRedondo)bindable;
+            entry.Entry.Placeholder = (string)newValue;
+        });
+
+        public static readonly BindableProperty IconoProperty = BindableProperty.Create(nameof(Icono), typeof(ImageSource), typeof(EntryRedondo), default(string), defaultBindingMode: BindingMode.TwoWay,
+        propertyChanged: (bindable, oldValue, newValue) =>
+        {
+            var imagen = (EntryRedondo)bindable;
+            imagen.Icon.Source = (ImageSource)newValue;
+        });
+
+        public static readonly BindableProperty EstilodProperty = BindableProperty.Create(nameof(Style), typeof(Style), typeof(EntryWithImageUC), default(Style),
+        propertyChanged: (bindable, oldValue, newValue) =>
+       {
+           var entry = (EntryRedondo)bindable;
+           entry.Entry.Style = (Style)newValue;
+       });
+
         public static readonly BindableProperty KeyboardProperty = BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(EntryRedondo), default(Keyboard),
         propertyChanged: (bindable, oldValue, newValue) =>
         {
@@ -101,11 +114,12 @@ namespace SMI.UC
             entry.Entry.Keyboard = (Keyboard)newValue;
         });
 
-        public static readonly BindableProperty EstilodProperty = BindableProperty.Create(nameof(Style), typeof(Style), typeof(EntryWithImageUC), default(Style),
-       propertyChanged: (bindable, oldValue, newValue) =>
-       {
-           var entry = (EntryRedondo)bindable;
-           entry.Entry.Style = (Style)newValue;
-       });
+        public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(EntryRedondo), default(string), defaultBindingMode: BindingMode.TwoWay,
+        propertyChanged: (bindable, oldValue, newValue) =>
+        {
+            var entry = (EntryRedondo)bindable;
+            entry.Entry.Text = (string)newValue;
+        }); 
+        #endregion
     }
 }

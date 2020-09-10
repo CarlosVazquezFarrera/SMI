@@ -24,10 +24,12 @@
         <Frame BorderColor="Black" 
                CornerRadius="25" 
                VerticalOptions="CenterAndExpand"
-               HorizontalOptions="CenterAndExpand">
+               HorizontalOptions="CenterAndExpand"
+               Margin="20, 0">
             <StackLayout>
                 <Label Text="{Binding Mensaje}"
-                       Style="{StaticResource LabelAzulPopUp}"/>
+                       Style="{StaticResource LabelAzulPopUp}"
+                       HorizontalTextAlignment="Center"/>
                 <BoxView HorizontalOptions="FillAndExpand" 
                          HeightRequest="1" 
                          Color="#D2A92D"/>

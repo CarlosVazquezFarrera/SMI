@@ -17,7 +17,7 @@
         /// <summary>
         /// Establece y obtiene el texto que se introduce en el Entry
         /// </summary>
-        #region Atributo
+        #region Attributes
         public string Text
         {
             get => (string)GetValue(TextProperty);
@@ -63,7 +63,7 @@
         }
         #endregion
 
-        #region Propiedad
+        #region Properties
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(EntryWithImageUC), default(string), defaultBindingMode: BindingMode.TwoWay,
         propertyChanged: (bindable, oldValue, newValue) =>
         {
