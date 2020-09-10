@@ -114,6 +114,13 @@
             <Setter Property="VerticalTextAlignment" Value="Center"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
         </Style>
+
+        <Style x:Key="EntryPassword" 
+               BasedOn="{StaticResource EntryLogin}"
+               TargetType="Entry">
+            <Setter Property="Margin" Value="20, 0"/>
+        </Style>
+
         <Style x:Key="FrameLogin" TargetType="Frame">
             <Setter Property="BackgroundColor" Value="#ebeef0"/>
             <Setter Property="Margin" Value="0"/>
