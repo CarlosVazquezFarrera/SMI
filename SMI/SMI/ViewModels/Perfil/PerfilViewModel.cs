@@ -73,7 +73,13 @@
 
         private async void CerrarSesion()
         {
-            await Navigation.NavigateTo(PagesKeys.Login);
+            bool respuesta = await PopUp.PushConfirmationPopUp(PopUpKeys.Confirmacion, "¿Seguro que desea cerrar su sesión?");
+            if (respuesta)
+            {
+                Configuracion.MantenerSesion = false;
+                await Navigation.NavigateTo(PagesKeys.Login);
+            }
+            //await Navigation.NavigateTo(PagesKeys.Login);
         }
         private async void CambiarFoto()
         {

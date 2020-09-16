@@ -2,6 +2,7 @@
 {
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using SMI.Helpers;
     using SMI.Infrastructure.BL;
     using SMI.Models;
     using SMI.Models.Api;
@@ -93,9 +94,12 @@
                 if (response.Exito)
                 {
                     await PopUp.PushPopUp(PopUpKeys.Mensaje, response.Mensaje);
+                    Configuracion.MantenerSesion = false;
+                    await Navigation.NavigateTo(PagesKeys.Login);
                 }
                 else
                 {
+                    PasswordActual = string.Empty;
                     await PopUp.PushPopUp(PopUpKeys.Mensaje, response.Mensaje);
                 }
             }

@@ -9,5 +9,6 @@ namespace SMI.OS.Keys
         public const string Mensaje = "Mensaje";
         public const string Cargando = "Cargando";
         public const string CambiarFoto = "CambiarFoto";
+        public const string Confirmacion = "Confirmacion";
 }
 }

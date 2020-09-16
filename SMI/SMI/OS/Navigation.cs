@@ -18,7 +18,7 @@
         public static async Task NavigateTo(string page)
         {
             switch (page)
-            {
+            {   
                 case PagesKeys.RootTabbed:
                     App.Current.MainPage = new NavigationPage(new RootTabbed());
                     break;

@@ -18,7 +18,7 @@
         #endregion
 
         #region Methos
-        private async void CerrarPopUp()
+        protected async void CerrarPopUp()
         {
             await PopUp.PopAllPopUps();
         } 

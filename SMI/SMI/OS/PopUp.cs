@@ -28,7 +28,6 @@
         }
         public static async Task PushPopUp(string page, params object[] param)
         {
-            MessagingCenter.Send<string>(param[0].ToString(), "mensajeEnviado");
             switch (page)
             {
                 case PopUpKeys.Mensaje:
@@ -40,6 +39,26 @@
                     await IsPopUpInstanced(new CargandoPopUp());
                     break;
             }
+        }
+        /// <summary>
+        /// PopUp para confirmacion
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public static async Task<bool> PushConfirmationPopUp(string page, params object[] param)
+        {
+            bool response = false;
+            switch (page)
+            {
+                case PopUpKeys.Confirmacion:
+                    ConfirmationViewModel.GetInstance().Mensaje = param[0].ToString();
+                    await IsPopUpInstanced(new ConfirmationPopUp());
+                    response = (bool) await ConfirmationViewModel.GetInstance().GetResult();
+                    break;
+            }
+            
+            return response;
         }
 
         /// <summary>
