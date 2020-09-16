@@ -2,7 +2,9 @@
 {
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using SMI.Infrastructure.BL;
     using SMI.Models;
+    using SMI.Models.Api;
     using SMI.OS;
     using SMI.OS.Keys;
     using System.Windows.Input;
@@ -10,6 +12,7 @@
     public class CambiarPasswordViewModel: ViewModelBase
     {
         #region Properties
+        private readonly UsuarioBL bl = new UsuarioBL();
         private readonly Response<string> response = new Response<string>();
         /// <summary>
         /// Contraseña acual del usuario que ha iniciado sesión
@@ -79,7 +82,22 @@
             Validar();
             if (response.Exito)
             {
-
+                Credenciales credenciales = new Credenciales { 
+                    Id = 2,
+                    Password = PasswordActual,
+                    NewPassword = passwordNueva
+                };
+                await PopUp.PushPopUp(PopUpKeys.Cargando, "Un momento...");
+                var response = await bl.CambiarPassword(credenciales);
+                await PopUp.PopAllPopUps();
+                if (response.Exito)
+                {
+                    await PopUp.PushPopUp(PopUpKeys.Mensaje, response.Mensaje);
+                }
+                else
+                {
+                    await PopUp.PushPopUp(PopUpKeys.Mensaje, response.Mensaje);
+                }
             }
             else
             {

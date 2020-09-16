@@ -63,6 +63,12 @@
             else return (res.StatusCode, default(TResponse));
         }
 
+        /// <summary>
+        /// Get
+        /// </summary>
+        /// <typeparam name="TResponse"></typeparam>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public async Task<(HttpStatusCode StatusCode, TResponse Content)> CallGetAsync<TResponse>(string url)
         {
             try
@@ -75,7 +81,14 @@
                 return (HttpStatusCode.BadRequest, default(TResponse));
             }
         }
-
+        /// <summary>
+        /// Post
+        /// </summary>
+        /// <typeparam name="TRequest"></typeparam>
+        /// <typeparam name="TResponse"></typeparam>
+        /// <param name="url"></param>
+        /// <param name="req"></param>
+        /// <returns></returns>
         public async Task<(HttpStatusCode StatusCode, TResponse Content)> CallPostAsync<TRequest, TResponse>(string url, TRequest req)
         {
             try
@@ -90,19 +103,12 @@
             }
         }
 
-        public async Task<(HttpStatusCode StatusCode, TResponse Content)> CallPutAsync<TRequest, TResponse>(string url, TRequest req)
-        {
-            try
-            {
-                var res = await PutAsync(url, new StringContent(JsonConvert.SerializeObject(req), Encoding.UTF8, "application/json")).ConfigureAwait(false);
-                return ProcessResponse<TResponse>(res);
-            }
-            catch (Exception)
-            {
-                return (HttpStatusCode.BadRequest, default(TResponse));
-            }
-        }
-
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <typeparam name="TResponse"></typeparam>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public async Task<(HttpStatusCode StatusCode, TResponse Content)> CallDeleteAsync<TResponse>(string url)
         {
             try
@@ -117,6 +123,40 @@
             }
         }
 
+        /// <summary>
+        /// Post
+        /// </summary>
+        /// <typeparam name="TRequest"></typeparam>
+        /// <typeparam name="TResponse"></typeparam>
+        /// <param name="url"></param>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public async Task<(HttpStatusCode StatusCode, TResponse Content)> CallPutAsync<TRequest, TResponse>(string url, TRequest req)
+        {
+            try
+            {
+                var res = await PutAsync(url, new StringContent(JsonConvert.SerializeObject(req), System.Text.Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                return ProcessResponse<TResponse>(res);
+            }
+            catch (Exception)
+            {
+                return (HttpStatusCode.BadRequest, default(TResponse));
+            }
+        }
+
+
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <typeparam name="TResponse"></typeparam>
+        /// <param name="url"></param>
+        /// <param name="file"></param>
+        /// <param name="contentName"></param>
+        /// <param name="fileName"></param>
+        /// <param name="mediaType"></param>
+        /// <param name="extraContent"></param>
+        /// <param name="extraName"></param>
+        /// <returns></returns>
         public async Task<(HttpStatusCode StatusCode, TResponse Content)> CallPostFileAsync<TResponse>(string url, byte[] file, string contentName, string fileName, string mediaType, System.Net.Http.HttpContent extraContent = null, string extraName = "")
         {
             //http://stackoverflow.com/questions/16416601/c-sharp-httpclient-4-5-multipart-form-data-upload
@@ -128,7 +168,12 @@
             var res = await PostAsync(url, requestContent);
             return ProcessResponse<TResponse>(res);
         }
-        #endregion
+
+        /// <summary>
+        /// Validar si hay conexion a internet
+        /// </summary>
+        /// <param name="huesped"></param>
+        /// <returns></returns>
         public static bool HayConexion(string huesped = "http://www.bing.com")
         {
             try
@@ -144,5 +189,7 @@
                 return false;
             }
         }
+
+        #endregion
     }
 }
