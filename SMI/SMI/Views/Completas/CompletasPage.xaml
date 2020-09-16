@@ -8,9 +8,8 @@
              IconImageSource="completas.png">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Completas"
+                   Style="{StaticResource LabelPageText}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

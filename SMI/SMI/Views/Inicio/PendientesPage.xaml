@@ -12,6 +12,8 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="Pendientes"
+                   Style="{StaticResource LabelPageText}"/>
             <CollectionView ItemsSource="{Binding Lista}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

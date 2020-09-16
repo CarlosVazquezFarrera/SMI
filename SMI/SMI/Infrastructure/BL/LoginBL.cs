@@ -21,10 +21,18 @@
                 {
                     response =  data;
                 }
+                else if (status == HttpStatusCode.BadGateway)
+                {
+                    response.Mensaje = "Debe conectarse a internet";
+                }
+                else
+                {
+                    response.Mensaje = "Hubo un error al conectar";
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                response.Mensaje = ex.ToString();
             }
             return response;
         }

@@ -9,6 +9,8 @@
     
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="Pendientes"
+                   Style="{StaticResource LabelAzulPage}"/>
             <!--<CollectionView ItemsSource="{Binding Empleados}">
                 <CollectionView.EmptyViewTemplate>
                     <DataTemplate>

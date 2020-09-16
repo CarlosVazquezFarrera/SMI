@@ -21,6 +21,14 @@ namespace SMI.Infrastructure.BL
                 {
                     response = data;
                 }
+                else if (status == HttpStatusCode.BadGateway)
+                {
+                    response.Mensaje = "Debe conectarse a internet";
+                }
+                else
+                {
+                    response.Mensaje = "Hubo un error al conectar";
+                }
             }
             catch (Exception ex)
             {

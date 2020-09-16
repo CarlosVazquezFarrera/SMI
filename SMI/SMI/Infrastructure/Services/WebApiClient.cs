@@ -1,11 +1,11 @@
 ﻿namespace SMI.Infrastructure.Services
 {
     using Newtonsoft.Json;
+    using Plugin.Connectivity;
     using System;
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
-    using System.Text;
     using System.Threading.Tasks;
 
     public class WebApiClient : HttpClient
@@ -72,9 +72,16 @@
         public async Task<(HttpStatusCode StatusCode, TResponse Content)> CallGetAsync<TResponse>(string url)
         {
             try
-            {
+            { 
+                if (HayConexion())
+                {
                     var res = await GetAsync(url).ConfigureAwait(false);
                     return ProcessResponse<TResponse>(res);
+                }
+                else
+                {
+                    return (HttpStatusCode.BadGateway, default(TResponse));
+                }
             }
             catch (Exception)
             {
@@ -93,9 +100,15 @@
         {
             try
             {
-                //Validar que haya conexion
+                if (HayConexion())
+                {
                     var res = await PostAsync(url, new StringContent(JsonConvert.SerializeObject(req), System.Text.Encoding.UTF8, "application/json")).ConfigureAwait(false);
                     return ProcessResponse<TResponse>(res);
+                }
+                else
+                {
+                    return (HttpStatusCode.BadGateway, default(TResponse));
+                }
             }
             catch (Exception)
             {
@@ -113,8 +126,15 @@
         {
             try
             {
-                var res = await DeleteAsync(url).ConfigureAwait(false);
-                return ProcessResponse<TResponse>(res);
+                if (HayConexion())
+                {
+                    var res = await DeleteAsync(url).ConfigureAwait(false);
+                    return ProcessResponse<TResponse>(res);
+                }
+                else
+                {
+                    return (HttpStatusCode.BadGateway, default(TResponse));
+                }
             }
             catch (Exception)
             {
@@ -124,7 +144,7 @@
         }
 
         /// <summary>
-        /// Post
+        /// Put
         /// </summary>
         /// <typeparam name="TRequest"></typeparam>
         /// <typeparam name="TResponse"></typeparam>
@@ -135,8 +155,15 @@
         {
             try
             {
-                var res = await PutAsync(url, new StringContent(JsonConvert.SerializeObject(req), System.Text.Encoding.UTF8, "application/json")).ConfigureAwait(false);
-                return ProcessResponse<TResponse>(res);
+                if (HayConexion())
+                {
+                    var res = await PutAsync(url, new StringContent(JsonConvert.SerializeObject(req), System.Text.Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                    return ProcessResponse<TResponse>(res);
+                }
+                else
+                {
+                    return (HttpStatusCode.BadGateway, default(TResponse));
+                }
             }
             catch (Exception)
             {
@@ -146,7 +173,7 @@
 
 
         /// <summary>
-        /// Delete
+        /// Subir archivo
         /// </summary>
         /// <typeparam name="TResponse"></typeparam>
         /// <param name="url"></param>
@@ -170,24 +197,13 @@
         }
 
         /// <summary>
-        /// Validar si hay conexion a internet
+        /// Valida si hay conexion a internet
         /// </summary>
         /// <param name="huesped"></param>
         /// <returns></returns>
-        public static bool HayConexion(string huesped = "http://www.bing.com")
+        public static bool HayConexion()
         {
-            try
-            {
-                using (var client = new WebClient())
-                using (client.OpenRead(huesped))
-                {
-                    return true;
-                }
-            }
-            catch
-            {
-                return false;
-            }
+            return CrossConnectivity.Current.IsConnected;
         }
 
         #endregion

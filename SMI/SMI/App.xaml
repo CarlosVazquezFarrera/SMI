@@ -36,6 +36,13 @@
             <Setter Property="VerticalOptions" Value="Center"/>
         </Style>
 
+        <Style TargetType="Label"
+               x:Key="LabelPageText">
+            <Setter Property="FontFamily" Value="ChampagneAndLimousines"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="TextColor" Value="#013B6B"/>
+        </Style>
         <Style BasedOn="{StaticResource LabelBaseVerticalHorizontalCenter}"
                TargetType="Label"
                x:Key="LabelBaseVHCenterAzul" >
